@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="base_extension">
+  <link name="footpad">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.05"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="footpad_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="footpad"/>
+    <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+  </joint>
+</robot>
