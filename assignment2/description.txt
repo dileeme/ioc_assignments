@@ -1,0 +1,51 @@
+Description
+
+This assignment demonstrates a 2-link planar robotic arm URDF, with modular extensions for grippers, cameras, and base footpads.
+
+Key concepts covered: Links, joints, origins, axes, and visualization in Gazebo/Rviz.
+
+Expandable for larger applications: Additional links, sensors, end-effectors, and plugins for simulation.
+
+Files Provided
+
+simple_arm.urdf → 2-link robot arm
+
+gripper.urdf → optional end-effector module
+
+camera.urdf → optional camera module
+
+base_extension.urdf → optional base stabilizer
+
+Steps to Run
+
+Create a ROS2 package:
+
+ros2 pkg create --build-type ament_cmake urdf_demo
+
+
+Place all URDF files inside urdf_demo/urdf/.
+
+To view the URDF in Rviz:
+
+ros2 run rviz2 rviz2
+
+
+Add a RobotModel display in Rviz
+
+Set the description parameter to your URDF path:
+
+/robot_description := $(find urdf_demo)/urdf/simple_arm.urdf
+
+
+Optional: Merge modules into simple_arm.urdf
+
+Use <xacro:include> if using .xacro
+
+Or manually copy <link> and <joint> blocks from gripper.urdf, camera.urdf, base_extension.urdf
+
+Optional: Load in Gazebo for simulation
+
+ros2 launch urdf_demo display.launch.py
+
+
+You can now rotate joints and attach sensors or grippers for extended simulations.
