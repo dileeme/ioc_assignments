@@ -1,0 +1,60 @@
+Description
+
+This assignment demonstrates a simple ROS2 node for image processing using OpenCV. The node subscribes to an image topic (from a live camera or preloaded images), converts frames to grayscale, and publishes the processed image on a new topic.
+
+Key concepts covered: ROS2 subscriptions & publishing, OpenCV integration, cv_bridge, image topic communication.
+
+Expandable for larger applications: Object detection, edge detection, or AI-based vision tasks.
+
+Files Provided
+
+image_publisher.py → Publishes images to /camera/image_raw (simulates a camera feed).
+
+image_processor.py → Subscribes to /camera/image_raw, converts frames to grayscale, publishes to /camera/image_gray.
+
+package.xml → Minimal ROS2 package dependencies.
+
+images/ folder → Sample images to test the pipeline.
+
+Steps to Run
+
+Create a ROS2 Python package:
+
+ros2 pkg create --build-type ament_python ros2_opencv_demo
+
+
+Place the provided files:
+
+package.xml → root folder
+
+image_publisher.py and image_processor.py → ros2_opencv_demo/ros2_opencv_demo/
+
+images/ → inside ros2_opencv_demo/ros2_opencv_demo/
+
+Make scripts executable:
+
+chmod +x ros2_opencv_demo/ros2_opencv_demo
+
+
+Build the package:
+
+colcon build --packages-select ros2_opencv_demo
+source install/setup.bash
+
+
+Run publisher in one terminal:
+
+ros2 run ros2_opencv_demo image_publisher.py
+
+
+Run processor in another terminal:
+
+ros2 run ros2_opencv_demo image_processor.py
+
+
+Optional: Use rqt_image_view to view the topics:
+
+ros2 run rqt_image_view rqt_image_view
+
+
+Topic to view: /camera/image_gray
